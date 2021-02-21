@@ -18,3 +18,9 @@ Route::view('/','index')->name('home');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+use App\Models\Course;
+
+Route::get('test', function () {
+    return Course::latest()->with('user')->take(9)->get();
+});
