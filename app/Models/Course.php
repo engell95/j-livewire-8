@@ -12,4 +12,8 @@ class Course extends Model
     public function user(){
         return $this->belongsTo(User::Class);
     }
+
+    public function getExcerptAttribute(){
+        return substr($this->description,0,80)."...";
+    }
 }
