@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','index')->name('home');
+//Route::view('/','index')->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -24,3 +25,6 @@ use App\Models\Course;
 Route::get('test', function () {
     return Course::latest()->with('user')->take(9)->get();
 });
+
+Route::get('/',[PageController::class,'home'])->name('home');
+Route::get('curso',[PageController::class,'course'])->name('course');
