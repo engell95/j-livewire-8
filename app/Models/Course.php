@@ -16,4 +16,8 @@ class Course extends Model
     public function getExcerptAttribute(){
         return substr($this->description,0,80)."...";
     }
+
+    public function posts(){
+        return $this->hasMany(Post::Class);
+    }
 }
